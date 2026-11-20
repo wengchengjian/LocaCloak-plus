@@ -1,0 +1,47 @@
+{
+   "action": {
+      "default_icon": {
+         "128": "icons/icon-128.png",
+         "16": "icons/icon-16.png",
+         "48": "icons/icon-48.png"
+      },
+      "default_popup": "popup.html"
+   },
+   "background": {
+      "service_worker": "background.js"
+   },
+   "content_scripts": [ {
+      "all_frames": true,
+      "js": [ "content.js" ],
+      "matches": [ "\u003Call_urls>" ],
+      "run_at": "document_start"
+   } ],
+   "declarative_net_request": {
+      "rule_resources": [ {
+         "enabled": true,
+         "id": "ruleset_1",
+         "path": "rules.json"
+      } ]
+   },
+   "description": "Cloak your locale — override timezone, geolocation, and language to match your VPN exit location.",
+   "host_permissions": [ "\u003Call_urls>" ],
+   "icons": {
+      "128": "icons/icon-128.png",
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1HPARqxtv1xQTiCkDxap/fRkyt3AK19RLdOWOYTyEF1a6besSIVruiW8Kf2kf6dqCwKP9N75JiDyKY9pkNdoE4h3swKCd0+pglzpO3bYEO19lRraVTvFqBxnEDkSCYorT+hXnIKjrfEeGZ4Z4dYLGMQh5Fo0o74A0pZxLF/E5udlyCdEznx0V/v/JCJy/Gv8s3FpHqFDm5GsajUp2yADw4ZrNQmKT2OMrnOWrRytdZmGbPRb5VRx/EBp+R1Oi05vU22vLaaOSXyK0TZH4QsihCEl4x8R9JdPZzQ1Z6RjAOeh44lZCCf9E/ACBAaC3PLFLCMxX1s1C+IOrO8dovETlQIDAQAB",
+   "manifest_version": 3,
+   "name": "LocaCloak",
+   "options_ui": {
+      "open_in_tab": true,
+      "page": "options.html"
+   },
+   "permissions": [ "storage", "declarativeNetRequest", "privacy" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.0.3",
+   "web_accessible_resources": [ {
+      "matches": [ "\u003Call_urls>" ],
+      "resources": [ "inject.js" ]
+   } ]
+}

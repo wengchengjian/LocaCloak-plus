@@ -1,0 +1,458 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
+  font-size: 13px;
+  background: var(--bg-color);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  /* Zero-scroll dimensions */
+  width: 340px;
+  overflow: hidden;
+}
+
+.drawer-container {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* =========================================
+   Hero Section & Brand
+========================================= */
+.hero-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.icon-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon-brand img {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px; /* squircle approximation */
+}
+
+.brand-text {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+}
+
+/* =========================================
+   Master Toggle Switch (iOS HIG style)
+========================================= */
+.master-toggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.master-toggle input {
+  display: none;
+}
+
+.toggle-track {
+  width: 48px;
+  height: 28px;
+  background: var(--border-color);
+  border-radius: 99px;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 24px;
+  height: 24px;
+  background: #fff;
+  border-radius: 50%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.master-toggle input:checked + .toggle-track {
+  background: var(--accent-color);
+  box-shadow: 0 0 12px rgba(var(--accent-color-rgb), 0.4);
+}
+
+.master-toggle input:checked + .toggle-track .toggle-thumb {
+  transform: translateX(20px);
+  background: var(--accent-text); /* dark thumb on accent bright track */
+}
+
+/* =========================================
+   Location Card
+========================================= */
+.location-card {
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.location-icon-wrapper {
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.location-icon {
+  width: 14px;
+  height: 14px;
+  color: var(--accent-color);
+  flex-shrink: 0;
+}
+
+.location-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+}
+
+.location-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.location-coords {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 1px;
+}
+
+.location-latlng {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 2px;
+}
+
+.location-latlng-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+}
+
+.location-latlng-val {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.location-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.location-tz-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.location-tz {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--text-main);
+}
+
+.location-dst {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.03em;
+}
+
+.location-dst.dst-on {
+  color: var(--accent-color);
+  background: rgba(var(--accent-color-rgb), 0.1);
+}
+
+.location-dst.dst-off {
+  color: var(--text-muted);
+}
+
+/* =========================================
+   Protection Panel
+========================================= */
+.protection-panel {
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.protection-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.protection-icon {
+  width: 14px;
+  height: 14px;
+  color: var(--accent-color);
+  flex-shrink: 0;
+}
+
+.protection-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.protection-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.protection-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 10px;
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  transition: border-color 0.2s;
+}
+
+.protection-item:hover {
+  border-color: rgba(var(--accent-color-rgb), 0.3);
+}
+
+/* Highlight border when the toggle inside is checked */
+.protection-item:has(input:checked) {
+  border-color: var(--accent-color);
+  background: rgba(var(--accent-color-rgb), 0.03);
+}
+
+/* Soften hover when checked */
+.protection-item:has(input:checked):hover {
+  border-color: var(--accent-color);
+  background: rgba(var(--accent-color-rgb), 0.06);
+}
+
+.protection-name-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.protection-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+.badge-exp {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 3px 6px;
+  border-radius: 4px;
+  background: rgba(var(--accent-color-rgb), 0.1);
+  color: var(--accent-color);
+  border: 1px solid rgba(var(--accent-color-rgb), 0.2);
+}
+
+.badge-exp svg {
+  width: 10px;
+  height: 10px;
+}
+
+/* Mini toggle switch (compact version for protection panel) */
+.switch-sm {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.switch-sm input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider-sm {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: var(--border-color);
+  transition: 0.3s;
+  border-radius: 20px;
+}
+
+.slider-sm:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: #fff;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+.switch-sm input:checked + .slider-sm {
+  background-color: var(--accent-color);
+}
+
+.switch-sm input:checked + .slider-sm:before {
+  transform: translateX(16px);
+  background-color: var(--accent-text);
+}
+
+/* =========================================
+   Action Footer
+========================================= */
+.action-footer {
+  display: flex;
+  gap: 12px;
+}
+
+/* Language Switcher (Custom Select Override) */
+.cs-wrapper.lang-switcher {
+  width: 70px;
+}
+
+.cs-wrapper.lang-switcher .cs-trigger {
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.cs-wrapper.lang-switcher .cs-trigger-text {
+  text-align: center;
+}
+
+/* Ensure the dropdown opens upward and aligns to the right edge */
+.cs-wrapper.lang-switcher .cs-dropdown {
+  width: 100px;
+  left: auto;
+  right: 0;
+}
+
+.cs-wrapper.lang-switcher .cs-option {
+  text-align: center;
+}
+
+.btn-ghost {
+  flex: 1;
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  height: 38px;
+  padding: 0 12px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.btn-ghost:hover {
+  background: var(--surface-color);
+  color: var(--text-main);
+  border-color: var(--text-muted);
+}
+
+.btn-icon {
+  width: 38px;
+  height: 38px;
+  background: var(--surface-color);
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-icon:hover {
+  background: var(--accent-color);
+  color: var(--accent-text);
+  border-color: var(--accent-color);
+}
+
+.btn-ghost svg, .btn-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* =========================================
+   Master Toggle → Disabled State
+========================================= */
+.location-card,
+.protection-panel,
+.action-footer .btn-ghost {
+  transition: opacity 0.25s ease, filter 0.25s ease;
+}
+
+.cloak-disabled .location-card,
+.cloak-disabled .protection-panel {
+  opacity: 0.38;
+  pointer-events: none;
+}
+
+.cloak-disabled .action-footer .btn-ghost {
+  opacity: 0.38;
+  pointer-events: none;
+}

@@ -1,0 +1,7 @@
+.profile/
+extension/_metadata/
+extension-src/_metadata/
+tests/artifacts/
+LocaCloak-plus.cmd
+LocaCloak-plus.lnk
+*.log

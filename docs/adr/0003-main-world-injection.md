@@ -1,0 +1,3 @@
+# MAIN-world injection instead of script-tag bootstrapping
+
+The page bootstrap is registered as a manifest MAIN-world content script at `document_start`, with configuration held in a closure. The isolated content script performs the allowlist check and posts the per-frame config; the MAIN-world script installs the legacy patches with a fake `document.currentScript`. The current `<script data-cfg>` element and the `__lc__` / `__locacloak_update__` / `__locacloak_protect_update__` globals are removed; hot updates use closure-held update functions. Deep native-parity work (Proxy descriptors, `toString` spoofing) is deferred until a concrete detector requires it.

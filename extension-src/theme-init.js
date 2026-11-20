@@ -1,0 +1,1 @@
+!function(){const t=localStorage.getItem("locacloak-theme");t?document.documentElement.setAttribute("data-theme",t):window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches?document.documentElement.setAttribute("data-theme","light"):document.documentElement.setAttribute("data-theme","dark")}();

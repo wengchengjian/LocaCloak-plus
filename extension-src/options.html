@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>LocaCloak Preferences</title>
+  <link rel="stylesheet" href="styles/theme.css">
+  <link rel="stylesheet" href="styles/custom-select.css">
+  <link rel="stylesheet" href="styles/activation.css">
+  <link rel="stylesheet" href="lib/leaflet.min.css">
+  <link rel="stylesheet" href="styles/options.css">
+  <script src="theme-init.js"></script>
+</head>
+<body>
+  <div class="layout-wrapper">
+    <aside class="sidebar">
+      <div class="brand">
+        <img src="icons/icon-48.png" alt="Logo">
+        <h1 data-i18n="brand_name">LocaCloak</h1>
+      </div>
+      <nav class="nav-menu">
+        <div class="nav-item active" data-page="preferences" data-i18n="nav_preferences">Preferences</div>
+        <div class="nav-item" data-page="guide" data-i18n="nav_guide">Guide</div>
+      </nav>
+      <div class="sidebar-footer">
+        <label data-i18n="label_ui_lang">UI Language</label>
+        <select id="ui-lang-switcher" class="custom-select">
+          <option value="en">English</option>
+          <option value="zh-CN">简体中文</option>
+          <option value="zh-TW">繁體中文</option>
+          <option value="ru">Русский</option>
+          <option value="fr">Français</option>
+          <option value="es">Español</option>
+          <option value="ar">العربية</option>
+          <option value="fa">فارسی</option>
+          <option value="ko">한국어</option>
+        </select>
+        
+        <button id="theme-toggle" class="theme-toggle-btn">
+          <svg id="icon-sun" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" style="display: none;"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4.22 4.22a1 1 0 011.415 0l.708.707a1 1 0 01-1.414 1.414l-.708-.707a1 1 0 010-1.414zM16 10a1 1 0 01-1-1h-1a1 1 0 110-2h1a1 1 0 011 1zm-4.22 4.22a1 1 0 010 1.415l-.707.708a1 1 0 01-1.414-1.414l.707-.708a1 1 0 011.414 0zM10 16a1 1 0 01-1 1v1a1 1 0 112 0v-1a1 1 0 01-1-1zm-4.22-4.22a1 1 0 01-1.415 0l-.708-.707a1 1 0 011.414-1.414l.708.707a1 1 0 010 1.414zM4 10a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zM5.78 5.78a1 1 0 010-1.415l.707-.708a1 1 0 011.414 1.414l-.707.708a1 1 0 01-1.414 0zM10 6a4 4 0 100 8 4 4 0 000-8z" clip-rule="evenodd"></path></svg>
+          <svg id="icon-moon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+          <span id="theme-text" data-i18n="toggle_theme">Toggle Theme</span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <!-- Page: Preferences -->
+      <div class="page-section active" id="page-preferences">
+        <header class="page-header">
+          <h2 class="page-title" data-i18n="page_title">Preferences</h2>
+          <p class="page-desc" data-i18n="page_desc">Manage your extension settings and domain rules.</p>
+        </header>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title" data-i18n="card_core">Core Engine</h3>
+          </div>
+          <div class="toggle-row form-group">
+            <div class="toggle-info">
+              <strong data-i18n="toggle_enable">Enable Override</strong>
+              <span data-i18n="toggle_desc">Active on matched domains</span>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="enabled">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-row form-group" style="margin-top: 12px;">
+            <div class="toggle-info">
+              <strong data-i18n="toggle_webrtc">WebRTC Protection</strong>
+              <span data-i18n="toggle_webrtc_desc">Prevent real IP leak via WebRTC</span>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="webrtc-protection">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-row form-group" style="margin-top: 12px;">
+            <div class="toggle-info">
+              <div class="toggle-title-row">
+                <strong data-i18n="toggle_canvas">Canvas Protection</strong>
+                <span class="badge-exp">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                  <span data-i18n="badge_experimental">Experimental</span>
+                </span>
+              </div>
+              <span data-i18n="toggle_canvas_desc">Noise injection to prevent Canvas fingerprinting</span>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="canvas-protection">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-row form-group" style="margin-top: 12px;">
+            <div class="toggle-info">
+              <div class="toggle-title-row">
+                <strong data-i18n="toggle_webgl">WebGL Protection</strong>
+                <span class="badge-exp">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                  <span data-i18n="badge_experimental">Experimental</span>
+                </span>
+              </div>
+              <span data-i18n="toggle_webgl_desc">Hide GPU info to prevent WebGL fingerprinting</span>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="webgl-protection">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="form-group" style="margin-top: 12px;">
+            <button class="btn btn-secondary" id="refresh-fingerprint" style="width: 100%;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6"></path><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+              <span data-i18n="btn_refresh_fingerprint">Refresh Canvas Fingerprint</span>
+            </button>
+          </div>
+
+          <div class="toggle-row form-group" style="margin-top: 12px;">
+            <div class="toggle-info">
+              <strong data-i18n="toggle_iframe_coverage">Deep Iframe Protection</strong>
+              <span data-i18n="toggle_iframe_coverage_desc">Extend spoofing into cross-origin security iframes (Cloudflare, Stripe, etc.)</span>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="iframe-coverage">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="form-group" style="margin-top: 20px;">
+            <label for="language" data-i18n="label_language">Browser Language Mask</label>
+            <select id="language" class="custom-select">
+              <option value="en-US">English (US)</option>
+              <option value="en-GB">English (UK)</option>
+              <option value="ja-JP">Japanese</option>
+              <option value="ko-KR">Korean</option>
+              <option value="zh-CN">Chinese (Simplified)</option>
+              <option value="zh-TW">Chinese (Traditional)</option>
+              <option value="fr-FR">French</option>
+              <option value="de-DE">German</option>
+              <option value="es-ES">Spanish</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="margin-top: 20px;">
+            <label for="timezone" data-i18n="label_timezone">Timezone</label>
+            <select id="timezone" class="custom-select">
+              <optgroup label="Americas">
+                <option value="America/New_York">Eastern Time (New York)</option>
+                <option value="America/Chicago">Central Time (Chicago)</option>
+                <option value="America/Denver">Mountain Time (Denver)</option>
+                <option value="America/Los_Angeles">Pacific Time (Los Angeles)</option>
+                <option value="America/Anchorage">Alaska (Anchorage)</option>
+                <option value="Pacific/Honolulu">Hawaii (Honolulu)</option>
+                <option value="America/Phoenix">Arizona (Phoenix, no DST)</option>
+                <option value="America/Toronto">Eastern (Toronto)</option>
+                <option value="America/Vancouver">Pacific (Vancouver)</option>
+                <option value="America/Mexico_City">Mexico City</option>
+                <option value="America/Sao_Paulo">São Paulo</option>
+                <option value="America/Argentina/Buenos_Aires">Buenos Aires</option>
+                <option value="America/Bogota">Bogotá</option>
+                <option value="America/Lima">Lima</option>
+                <option value="America/Santiago">Santiago</option>
+              </optgroup>
+              <optgroup label="Europe">
+                <option value="Europe/London">London (GMT/BST)</option>
+                <option value="Europe/Paris">Paris (CET)</option>
+                <option value="Europe/Berlin">Berlin (CET)</option>
+                <option value="Europe/Madrid">Madrid (CET)</option>
+                <option value="Europe/Rome">Rome (CET)</option>
+                <option value="Europe/Amsterdam">Amsterdam (CET)</option>
+                <option value="Europe/Zurich">Zurich (CET)</option>
+                <option value="Europe/Stockholm">Stockholm (CET)</option>
+                <option value="Europe/Moscow">Moscow (MSK)</option>
+                <option value="Europe/Istanbul">Istanbul (TRT)</option>
+                <option value="Europe/Athens">Athens (EET)</option>
+                <option value="Europe/Warsaw">Warsaw (CET)</option>
+                <option value="Europe/Helsinki">Helsinki (EET)</option>
+              </optgroup>
+              <optgroup label="Asia">
+                <option value="Asia/Tokyo">Tokyo (JST)</option>
+                <option value="Asia/Seoul">Seoul (KST)</option>
+                <option value="Asia/Shanghai">Shanghai (CST)</option>
+                <option value="Asia/Hong_Kong">Hong Kong (HKT)</option>
+                <option value="Asia/Taipei">Taipei (CST)</option>
+                <option value="Asia/Singapore">Singapore (SGT)</option>
+                <option value="Asia/Kolkata">Mumbai/Kolkata (IST)</option>
+                <option value="Asia/Bangkok">Bangkok (ICT)</option>
+                <option value="Asia/Ho_Chi_Minh">Ho Chi Minh (ICT)</option>
+                <option value="Asia/Jakarta">Jakarta (WIB)</option>
+                <option value="Asia/Dubai">Dubai (GST)</option>
+                <option value="Asia/Riyadh">Riyadh (AST)</option>
+                <option value="Asia/Tehran">Tehran (IRST)</option>
+                <option value="Asia/Karachi">Karachi (PKT)</option>
+                <option value="Asia/Dhaka">Dhaka (BST)</option>
+                <option value="Asia/Manila">Manila (PHT)</option>
+              </optgroup>
+              <optgroup label="Oceania">
+                <option value="Australia/Sydney">Sydney (AEST)</option>
+                <option value="Australia/Melbourne">Melbourne (AEST)</option>
+                <option value="Australia/Perth">Perth (AWST)</option>
+                <option value="Australia/Brisbane">Brisbane (AEST, no DST)</option>
+                <option value="Pacific/Auckland">Auckland (NZST)</option>
+                <option value="Pacific/Fiji">Fiji (FJT)</option>
+              </optgroup>
+              <optgroup label="Africa">
+                <option value="Africa/Cairo">Cairo (EET)</option>
+                <option value="Africa/Lagos">Lagos (WAT)</option>
+                <option value="Africa/Johannesburg">Johannesburg (SAST)</option>
+                <option value="Africa/Nairobi">Nairobi (EAT)</option>
+                <option value="Africa/Casablanca">Casablanca (WET)</option>
+              </optgroup>
+            </select>
+          </div>
+        </div>
+
+        <!-- Geolocation Card with Map -->
+        <div class="card geo-card">
+          <div class="card-header">
+            <h3 class="card-title" data-i18n="card_geo">Geolocation</h3>
+            <span id="coords-display">34.0522, -118.2437</span>
+          </div>
+          
+          <div id="map"></div>
+          <p class="map-hint" data-i18n="map_click_hint">Click map to set coordinates</p>
+          
+          <div class="map-actions" style="margin-top: 12px;">
+            <button class="btn btn-primary" id="sync-vpn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+              <span class="btn-text" data-i18n="btn_sync_vpn">Sync to VPN Location</span>
+            </button>
+            <button class="btn btn-secondary" id="reset-location">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6"></path><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+              <span data-i18n="btn_reset_geo">Reset to Los Angeles</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title" data-i18n="card_domains">Target Domains</h3>
+          </div>
+          <div class="form-group">
+            <label for="domains" data-i18n="label_domains">Domain Allowlist (One per line, supports * wildcard)</label>
+            <textarea id="domains" class="domain-list" placeholder="*.google.com&#10;*.youtube.com&#10;*.openai.com"></textarea>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-primary" id="save">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+            <span data-i18n="btn_save">Save Configuration</span>
+          </button>
+          <button class="btn btn-secondary" id="reset" data-i18n="btn_restore">Restore Defaults</button>
+        </div>
+      </div>
+
+      <!-- Page: Guide -->
+      <div class="page-section" id="page-guide">
+        <header class="page-header">
+          <h2 class="page-title" data-i18n="guide_title">Guide</h2>
+          <p class="page-desc" data-i18n="guide_desc">Learn how this extension helps you.</p>
+        </header>
+
+        <!-- Sponsor Card -->
+        <div class="card" style="border-color: rgba(var(--accent-color-rgb), 0.3); background: rgba(var(--accent-color-rgb), 0.02);">
+          <div class="card-header" style="margin-bottom: 8px;">
+            <h3 class="card-title" data-i18n="guide_sponsor_title" style="color: var(--accent-color); display: flex; align-items: center; gap: 8px;">
+              ☕ Buy me a coffee
+            </h3>
+          </div>
+          <div class="guide-content">
+            <p data-i18n="guide_sponsor_desc">If you find LocaCloak useful, consider supporting the development!</p>
+            <div class="sponsor-buttons">
+              <a href="https://ko-fi.com/marimario" target="_blank" rel="noopener noreferrer" class="sponsor-btn">
+                <span class="sponsor-icon">☕</span>
+                <span class="sponsor-label" data-i18n="sponsor_kofi">Ko-fi</span>
+                <span class="sponsor-sub" data-i18n="sponsor_kofi_sub">International</span>
+              </a>
+              <a href="https://ifdian.net/a/marimario" target="_blank" rel="noopener noreferrer" class="sponsor-btn">
+                <span class="sponsor-icon">💛</span>
+                <span class="sponsor-label" data-i18n="sponsor_afdian">Afdian</span>
+                <span class="sponsor-sub" data-i18n="sponsor_afdian_sub">Mainland China</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="guide-card-header">
+            <svg class="guide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            <h3 class="card-title" data-i18n="guide_what_title">What does this extension do?</h3>
+          </div>
+          <div class="guide-content">
+            <p data-i18n="guide_what_p1"></p>
+            <p data-i18n="guide_what_p2"></p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="guide-card-header">
+            <svg class="guide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <h3 class="card-title" data-i18n="guide_how_title">How does it work?</h3>
+          </div>
+          <div class="guide-content">
+            <ul class="guide-list">
+              <li><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-i18n="guide_how_geo"></span></li>
+              <li><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-i18n="guide_how_lang"></span></li>
+              <li><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-i18n="guide_how_tz"></span></li>
+              <li><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-i18n="guide_how_domains"></span></li>
+              <li><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-i18n="guide_how_webrtc"></span></li>
+              <li><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-i18n="guide_how_canvas"></span></li>
+              <li><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-i18n="guide_how_webgl"></span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="guide-card-header">
+            <svg class="guide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <h3 class="card-title" data-i18n="guide_use_title">Typical use cases</h3>
+          </div>
+          <div class="guide-content">
+            <ul class="guide-list">
+              <li><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-i18n="guide_use_1"></span></li>
+              <li><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-i18n="guide_use_2"></span></li>
+              <li><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-i18n="guide_use_3"></span></li>
+              <li><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-i18n="guide_use_4"></span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="guide-card-header" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
+            <svg class="guide-icon" style="color: #f59e0b;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            <h3 class="card-title" data-i18n="guide_tip_title">Important tips</h3>
+          </div>
+          <div class="guide-content" style="margin-top: 16px;">
+            <ul class="guide-list tips">
+              <li><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg><span data-i18n="guide_tip_1"></span></li>
+              <li><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg><span data-i18n="guide_tip_2"></span></li>
+              <li><svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg><span data-i18n="guide_tip_3"></span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="toast">
+    <svg class="toast-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+    <span data-i18n="toast_saved">Configuration saved successfully.</span>
+  </div>
+
+  <script src="lib/leaflet.min.js"></script>
+  <script src="i18n.js"></script>
+  <script src="shared.js"></script>
+  <script src="custom-select.js"></script>
+  <script src="activation.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>
